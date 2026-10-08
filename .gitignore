@@ -1,0 +1,26 @@
+cat > .gitignore << 'EOF'
+# 模型权重与检查点（最重要！）
+checkpoints/
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# 数据与缓存
+assets/*.bin
+assets/*.safetensors
+__pycache__/
+*.pyc
+.cache/
+
+# 日志与运行产物
+*.log
+wandb/
+runs/
+output/
+
+# 系统与环境
+.DS_Store
+.env
+*.swp
+EOF
