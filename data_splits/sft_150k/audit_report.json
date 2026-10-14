@@ -1,0 +1,32 @@
+{
+  "input_json": "/mnt/data2/zhiyu/first-task/datasets/llava_stage2/sft/llava_instruct_150k.json",
+  "image_root": "/mnt/data3/public_datasets/coco/train2017",
+  "seed": 42,
+  "total": 157712,
+  "unique_images": 81479,
+  "train_records": 157200,
+  "val_records": 512,
+  "train_images": 81212,
+  "val_images": 267,
+  "turn_counts": {
+    "2": 100547,
+    "4": 242,
+    "6": 1274,
+    "8": 21718,
+    "10": 33901,
+    "12": 29,
+    "14": 1
+  },
+  "roles": {
+    "human": 361411,
+    "gpt": 361411
+  },
+  "image_markers": {
+    "1": 157712
+  },
+  "char_len_p50_p90_p99": [
+    812,
+    2128,
+    2915
+  ]
+}

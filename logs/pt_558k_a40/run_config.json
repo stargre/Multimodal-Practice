@@ -1,0 +1,17 @@
+{
+  "json": "/mnt/data2/zhiyu/first-task/datasets/llava_stage2/pretrain/blip_laion_cc_sbu_558k.json",
+  "json_bytes": 180506011,
+  "image_root": "/mnt/data2/zhiyu/first-task/datasets/llava_stage2/pretrain",
+  "data_length": 558128,
+  "n_train": 558000,
+  "val_size": 128,
+  "seed": 42,
+  "max_train_samples": 0,
+  "epochs": 1,
+  "grad_accum": 8,
+  "lr": 0.0001,
+  "warmup_ratio": 0.03,
+  "min_lr_ratio": 0.1,
+  "total_updates": 69750,
+  "max_tokens": 3072
+}

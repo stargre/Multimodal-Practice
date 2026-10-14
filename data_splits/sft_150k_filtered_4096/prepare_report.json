@@ -1,0 +1,26 @@
+{
+  "max_tokens": 4096,
+  "json": "/mnt/data2/zhiyu/first-task/datasets/llava_stage2/sft/llava_instruct_150k.json",
+  "image_root": "/mnt/data3/public_datasets/coco/train2017",
+  "split_dir": "/mnt/data2/zhiyu/first-task/qwen2.5/multimodal_training/data_splits/sft_150k",
+  "scan_limit": 0,
+  "tokenizer_len": 151669,
+  "train": {
+    "checked": 157200,
+    "kept": 157200,
+    "dropped": 0,
+    "drop_reasons": {},
+    "min_length": 293,
+    "max_length": 1923,
+    "multi_turn_kept": 56985
+  },
+  "val": {
+    "checked": 512,
+    "kept": 512,
+    "dropped": 0,
+    "drop_reasons": {},
+    "min_length": 342,
+    "max_length": 1663,
+    "multi_turn_kept": 180
+  }
+}
