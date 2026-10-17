@@ -53,7 +53,7 @@ def get_masked_logprob(
 
 
     log_probs = F.log_softmax(
-        logits,
+        logits.float(),
         dim=-1
     )
 
@@ -68,6 +68,8 @@ def get_masked_logprob(
         index=safe_labels.unsqueeze(-1)
 
     ).squeeze(-1)
+
+
 
 
 
@@ -95,11 +97,10 @@ def get_masked_logprob(
     #
     # to avoid length bias
 
+
     seq_logprob = (
-        token_log_probs.sum(dim=-1)
-        /
-        token_count
-    )
+        token_log_probs * mask
+    ).sum(dim=-1)
 
 
     return seq_logprob

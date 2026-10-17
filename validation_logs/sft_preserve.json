@@ -1,0 +1,33 @@
+{
+  "status": "FAIL",
+  "cases": [
+    {
+      "name": "text",
+      "status": "FAIL"
+    }
+  ],
+  "options": {
+    "stage": "sft",
+    "checkpoint": "/mnt/data2/zhiyu/first-task/qwen2.5/multimodal_training/runs/sft_150k_ddp_6gpu/best_model.pt",
+    "qwen25": "/mnt/data2/zhiyu/first-task/qwen2.5/multimodal_training/checkpoints/Qwen2.5-VL-3B-Instruct",
+    "vit": "/mnt/data2/zhiyu/first-task/qwen2.5/multimodal_training/checkpoints/InternViT-300M-448px-V2_5",
+    "llm": "/mnt/data2/zhiyu/first-task/qwen2.5/multimodal_training/checkpoints/Qwen3-0.6B-Base",
+    "export": "/mnt/data2/zhiyu/first-task/qwen2.5/multimodal_training/runs/hf_phase1_sft_v1",
+    "report": "validation_logs/sft_preserve.json",
+    "device": "cuda",
+    "precision": "preserve",
+    "suite": "full",
+    "image": "/absolute/path/to/a/validation_image.jpg",
+    "max_new_tokens": 8,
+    "atol": 1e-05,
+    "rtol": 1e-05
+  },
+  "loading_info": {
+    "missing_keys": [],
+    "unexpected_keys": [],
+    "mismatched_keys": [],
+    "error_msgs": []
+  },
+  "weights_exact": true,
+  "error": "AssertionError: logits"
+}
