@@ -53,7 +53,7 @@ def map_role(role):
     return None
 
 
-def normalize_turns(raw_turns):
+def normalize_turns(raw_turns, allow_image=False):
     mapped, system_parts = [], []
     for turn in raw_turns:
         if not isinstance(turn, dict):
@@ -65,15 +65,20 @@ def normalize_turns(raw_turns):
         if role == 'system':
             system_parts.append(value)
             continue
-        if any(token in value for token in (
-            '<image>', '<|image_pad|>', '<|vision_start|>', '<|vision_end|>',
-            '<|im_start|>', '<|im_end|>'
-        )):
+        forbidden = ['<|image_pad|>', '<|vision_start|>', '<|vision_end|>',
+                     '<|im_start|>', '<|im_end|>']
+        if not allow_image:
+            forbidden.append('<image>')
+        if any(token in value for token in forbidden):
             return None
         if mapped and mapped[-1]['from'] == role:
             mapped[-1]['value'] += '\n\n' + value
         else:
             mapped.append({'from': role, 'value': value})
+    if allow_image:
+        image_marks = sum(turn['value'].count('<image>') for turn in mapped)
+        if image_marks > 1 or any('<image>' in turn['value'] for turn in mapped[1:]):
+            return None
     if not mapped or mapped[0]['from'] != 'human' or mapped[-1]['from'] != 'gpt':
         return None
     if len(mapped) % 2 or any(
@@ -196,7 +201,7 @@ def main():
             item = llava[idx]
             if not isinstance(item, dict) or not item.get('image'):
                 raise ValueError(f'LLaVA {part} record {idx} has no image')
-            conv = normalize_turns(item.get('conversations', []))
+            conv = normalize_turns(item.get('conversations', []), allow_image=True)
             if not conv:
                 raise ValueError(f'LLaVA {part} record {idx} has invalid conversations')
             rows.append({
